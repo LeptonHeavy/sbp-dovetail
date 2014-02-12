@@ -11,10 +11,15 @@ are the dovetail baselines and generate the sbp code necessary for cutting them.
 
 To Use:
 1) Open the index.html file in your browser
+
 2) Click the 'Browse...' button and select a sbp (ShopBot Toolpath) file
+
 3) Select the toolpath the has the guide vectors for the dovetail slots
+
 4) Enter the parameters for generating the dovetail geometry
+
 5) Click 'Update Preview' to see the generated geometry
+
 6) Click 'Generate SBP' to create a the output file
 
 Note that the output file will replace the guide vector toolpath selected in step 3 with the sbp commands for creating
