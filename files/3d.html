@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My first Three.js app</title>
+    <style>canvas {
+        width: 100%;
+        height: 100%
+    }</style>
+</head>
+<body>
+<script src="../js/three.js"></script>
+<script>
+    var scene = new THREE.Scene();
+    var mouseX = 0, mouseY = 0
+    var windowHalfX = window.innerWidth / 2
+    var windowHalfY = window.innerHeight / 2
+
+
+    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+    var geometryX = new THREE.Geometry();
+    var geometryY = new THREE.Geometry();
+    var geometryZ = new THREE.Geometry();
+    geometryX.vertices.push(new THREE.Vector3(0, 0, 0));
+    geometryX.vertices.push(new THREE.Vector3(10, 0, 0));
+    geometryY.vertices.push(new THREE.Vector3(0, 0, 0));
+    geometryY.vertices.push(new THREE.Vector3(0, 10, 0));
+    geometryZ.vertices.push(new THREE.Vector3(0, 0, 0));
+    geometryZ.vertices.push(new THREE.Vector3(0, 0, 10));
+    xaxis = new THREE.Line(geometryX, new THREE.LineBasicMaterial({ color: 0xff0000, opacity: 0.5 }))
+    yaxis = new THREE.Line(geometryY, new THREE.LineBasicMaterial({ color: 0x00ff00, opacity: 0.5 }))
+    zaxis = new THREE.Line(geometryZ, new THREE.LineBasicMaterial({ color: 0x0000ff, opacity: 0.5 }))
+    scene.add(xaxis);
+    scene.add(yaxis);
+    scene.add(zaxis);
+
+    document.addEventListener('mousemove', onDocumentMouseMove, false);
+    camera.position.x = 15;
+    camera.position.y = 10;
+    camera.position.z = -15;
+    var render = function () {
+        requestAnimationFrame(render);
+        camera.position.x += ( mouseX - camera.position.x ) * .025;
+        camera.position.y += ( -mouseY + 50 - camera.position.y ) * .025;
+        camera.lookAt(new THREE.Vector3(5, 5, 5));
+        // camera.lookAt(scene.position);
+        renderer.render(scene, camera);
+    };
+
+    function onDocumentMouseMove(event) {
+
+      // mouseX = event.clientX - windowHalfX;
+       //mouseY = event.clientY - windowHalfY;
+
+    }
+
+    render();
+</script>
+</body>
+</html>

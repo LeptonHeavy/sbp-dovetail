@@ -1,0 +1,24 @@
+.nav_param {
+    width: 300px;
+    float: left;
+    margin-right: 10px;
+}
+
+.preview_pane {
+    width: 900px;
+    height: 450px;
+    float: left;
+}
+
+.param_block {
+    display: none;
+}
+
+.tp_list {
+    display: none;
+}
+
+.src_sbp {
+    width: 1200px;
+    height: 50px;
+}

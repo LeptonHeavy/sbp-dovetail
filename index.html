@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="files/dovetail.css">
+    <script src="js/dovetail.js"></script>
+    <script src="js/parse_sbp.js"></script>
+
+</head>
+<body onload="document.getElementById('files').addEventListener('change', handleFileSelect, false);">
+<div class="nav_param">
+<input type="file" id="files" name="files[]"/>
+<output id="list"></output>
+<hr>
+File Length: <span id="file_length">0</span><br/>
+<select id="toolpath_list" name="toolpath_list" title="Toolpath List" class="tp_list" onchange="calc_pins()">
+</select><br/>
+Line Segments Found:<span id="pins_found"></span><br/>
+<hr>
+<div id="dove_param_list" class="param_block">
+    <form onsubmit="return update_preview();">
+    <fieldset>
+        <legend>Dovetail Parameters</legend>
+        <fieldset>
+            <legend>Measurement Units</legend>
+            <input type="radio" name="units" checked /> in <input type="radio" name="units" /> mm
+        </fieldset>
+        Material Thickness: <input type="text" value="0.75" size="6"/><br/>
+        Dovetail Depth: <input type="text" value="0.75" size="6"/><br/>
+        Cutter Diameter: <input type="text" value="0.25" size="6"/><br/>
+        Stepover (% of bit dia): <input type="text" value="20" size="6"/><br/>
+        <fieldset>
+            <legend>Dovetail Type</legend>
+            <input type="radio" name="angle" checked />All The Same<input type="text" id="angle_val" value="55" size="6"/><br/>
+            <input type="radio" name="angle" />Varies<br/><input type="file" id="angle_file" name="angle_file[]"/>
+        </fieldset>
+        X and Y Cut Speed: <input type="text" id="cut_rate" size="6" /><br/>
+        Plunge Speed: <input type="text" id="plunge_rate" size="6" /><br/>
+        Tolerance(% of designed size): <input type="text" value="20" size="6" /><br/>
+
+    </fieldset>
+    <button type="submit">Update Preview</button>
+    <textarea id="sbp_data" class="src_sbp"></textarea>
+    </form>
+</div>
+</div>
+<iframe src="files/3d.html"  class="preview_pane"/>
+</body>
+</html>
